@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KelasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,4 @@ Route::post('/logout', [DashboardController::class, 'logout'])->middleware('auth
 //Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::resource('/dashboard/users', UserController::class)->middleware('auth');
+Route::resource('/dashboard/kelas', KelasController::class)->middleware('auth');

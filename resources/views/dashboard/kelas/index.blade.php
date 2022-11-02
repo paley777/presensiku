@@ -33,11 +33,11 @@
             Dashboard
         </div>
         <div class="card-body">
-            <h5 class="card-title" id="fontheader">Manajemen Akun</h5>
-            <p class="card-text" id="fontp">Seluruh akun terdapat di tabel ini</p>
+            <h5 class="card-title" id="fontheader">Manajemen Kelas</h5>
+            <p class="card-text" id="fontp">Seluruh kelas terdapat di tabel ini</p>
             <div class="row">
                 <div class="col-9">
-                    <form action="/dashboard/users">
+                    <form action="/dashboard/kelas">
                         <div class="input-group mb-3 fontlink">
                             <input type="text" class="form-control" placeholder="Cari Berdasarkan Nama" name="search"
                                 value="{{ request('search') }}">
@@ -46,34 +46,28 @@
                     </form>
                 </div>
                 <div class="col-3">
-                    <a href="/dashboard/users/create" class="btn text-white bg-primary border-0">+ Tambah Akun Baru</a>
+                    <a href="/dashboard/kelas/create" class="btn text-white bg-primary border-0">+ Tambah Kelas Baru</a>
                 </div>
             </div>
             <table class="table table-hover fontlink">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">NIP</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">E-mail</th>
-                        <th scope="col">No. Tlp</th>
+                        <th scope="col">Nama Kelas</th>
+                        <th scope="col">Jumlah Siswa</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        @foreach ($users as $key => $user)
-                            <td>{{ $users->firstItem() + $key }}</td>
-                            <td>{{ $user->fullname }}</td>
-                            <td>{{ $user->nip }}</td>
-                            <td>{{ $user->role }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->no_hp }}</td>
+                        @foreach ($kelas as $key => $kela)
+                            <td>{{ $kelas->firstItem() + $key }}</td>
+                            <td>{{ $kela->nama_kelas }}</td>
+                            <td>{{ $kela->jumlah }}</td>
                             <td>
-                                <a href="/dashboard/users/{{ $user->id }}/edit"
+                                <a href="/dashboard/kelas/{{ $kela->id }}/edit"
                                     class="badge bg-warning border-0">Edit</a>
-                                <form action="/dashboard/users/{{ $user->id }}" method="post" class="d-inline">
+                                <form action="/dashboard/kelas/{{ $kela->id }}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf
                                     <button class="badge bg-danger border-0"
@@ -88,7 +82,7 @@
         <div class="row">
             <div class="col">
                 <div class="d-flex justify-content-center">
-                    {{ $users->links() }}
+                    {{ $kelas->links() }}
                 </div>
             </div>
         </div>

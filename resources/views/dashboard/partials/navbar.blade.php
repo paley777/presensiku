@@ -125,7 +125,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/dashboard/classes" class="nav-link {{ $active === 'classes' ? 'active' : 'link-light' }}">
+                    <a href="/dashboard/kelas" class="nav-link {{ $active === 'kelas' ? 'active' : 'link-light' }}">
                         <i class="bi bi-newspaper"></i> Manajemen Kelas
                     </a>
                 </li>

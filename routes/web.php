@@ -5,6 +5,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\SubjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,5 @@ Route::post('/logout', [DashboardController::class, 'logout'])->middleware('auth
 //Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::resource('/dashboard/users', UserController::class)->middleware('auth');
+Route::resource('/dashboard/subjects', SubjectController::class)->middleware('auth');
 Route::resource('/dashboard/kelas', KelasController::class)->middleware('auth');

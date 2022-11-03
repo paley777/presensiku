@@ -33,14 +33,14 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title" id="fontheader2">1000</h5>
-                        <p class="card-text">Jumlah siswa terdata</p>
+                        <p class="card-text">Jumlah mata pelajaran terdata</p>
                         <p class="card-text"><small class="text-muted">Last refresh page</small></p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">5023</h5>
-                        <p class="card-text">Jumlah presensi terdata</p>
+                        <h5 class="card-title" id="fontheader2">{{ $countkelas }}</h5>
+                        <p class="card-text">Jumlah kelas terdata</p>
                         <p class="card-text"><small class="text-muted">Last refresh page</small></p>
                     </div>
                 </div>

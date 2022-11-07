@@ -84,17 +84,20 @@
         position: fixed;
     }
 </style>
-<nav class="navbar navbar-dark bg-primary">
-    <div class="container-fluid">
-        <a class="navbar-brand" id="fontp" href="/">
-            <img src="{{ asset('storage/images/logo.png') }}" alt="Logo" width="40" height="40" class="">
-            PresensiKu - Sistem Presensi Siswa Sekolah
-        </a>
-    </div>
-</nav>
-
+<style>
+    /* The sticky class is added to the navbar with JS when it reaches its scroll position */
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+</style>
 <main class="d-flex flex-nowrap text-white">
     <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 280px; min-height: 100%;">
+        <br>
+        <br>
+        <br>
+        <br>
         <div class="dropdown" id="fontlink">
             <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle"
                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -156,3 +159,11 @@
         <hr>
     </div>
 </main>
+<nav class="navbar fixed-top navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" id="fontp" href="/">
+            <img src="{{ asset('storage/images/logo.png') }}" alt="Logo" width="40" height="40" class="">
+            PresensiKu - Sistem Presensi Siswa Sekolah
+        </a>
+    </div>
+</nav>

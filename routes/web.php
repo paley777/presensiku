@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,4 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::resource('/dashboard/users', UserController::class)->middleware('auth');
 Route::resource('/dashboard/subjects', SubjectController::class)->middleware('auth');
 Route::resource('/dashboard/kelas', KelasController::class)->middleware('auth');
+Route::resource('/dashboard/students', StudentController::class)->middleware('auth');

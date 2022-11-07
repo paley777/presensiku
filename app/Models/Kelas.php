@@ -27,4 +27,9 @@ class Kelas extends Model
             return $query->where('nama_kelas', 'like', '%' . $search . '%');
         });
     }
+
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
 }

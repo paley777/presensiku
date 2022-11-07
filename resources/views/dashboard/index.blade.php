@@ -32,7 +32,7 @@
             <div class="card-group">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">1000</h5>
+                        <h5 class="card-title" id="fontheader2">{{ $countsubjects }}</h5>
                         <p class="card-text">Jumlah mata pelajaran terdata</p>
                         <p class="card-text"><small class="text-muted">Last refresh page</small></p>
                     </div>

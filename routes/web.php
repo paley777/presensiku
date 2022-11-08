@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\DatasetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,7 @@ Route::resource('/dashboard/users', UserController::class)->middleware('auth');
 Route::resource('/dashboard/subjects', SubjectController::class)->middleware('auth');
 Route::resource('/dashboard/kelas', KelasController::class)->middleware('auth');
 Route::resource('/dashboard/students', StudentController::class)->middleware('auth');
+Route::resource('/dashboard/datasets', DatasetController::class)->middleware('auth');
+
+// Dataset From Siswa
+Route::post('/dashboard/datasets/siswa', [DatasetController::class, 'indexsiswa'])->middleware('auth');

@@ -8,6 +8,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\DatasetController;
+use App\Http\Controllers\PresensiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,11 @@ Route::resource('/dashboard/subjects', SubjectController::class)->middleware('au
 Route::resource('/dashboard/kelas', KelasController::class)->middleware('auth');
 Route::resource('/dashboard/students', StudentController::class)->middleware('auth');
 Route::resource('/dashboard/datasets', DatasetController::class)->middleware('auth');
+Route::resource('/dashboard/presences', PresensiController::class)->middleware('auth');
 
 // Dataset From Siswa
 Route::post('/dashboard/datasets/siswa', [DatasetController::class, 'indexsiswa'])->middleware('auth');
+
+// Start Presensi
+Route::post('/dashboard/presences/start', [PresensiController::class, 'start'])->middleware('auth');
+Route::post('/dashboard/presences/save', [PresensiController::class, 'save'])->middleware('auth');

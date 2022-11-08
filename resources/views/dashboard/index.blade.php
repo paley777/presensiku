@@ -51,7 +51,13 @@
                         <p class="card-text"><small class="text-muted">Last refresh page</small></p>
                     </div>
                 </div>
-
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" id="fontheader2">{{ $countstudents }}</h5>
+                        <p class="card-text">Jumlah Siswa terdata</p>
+                        <p class="card-text"><small class="text-muted">Last refresh page</small></p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="card-footer text-muted">

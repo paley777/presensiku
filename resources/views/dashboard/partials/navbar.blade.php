@@ -144,6 +144,12 @@
                         <i class="bi bi-newspaper"></i> Manajemen Siswa
                     </a>
                 </li>
+                <li>
+                    <a href="/dashboard/datasets"
+                        class="nav-link {{ $active === 'datasets' ? 'active' : 'link-light' }}">
+                        <i class="bi bi-newspaper"></i> Manajemen Dataset
+                    </a>
+                </li>
             @endif
             <li>
                 <a href="/dashboard/presences" class="nav-link {{ $active === 'presences' ? 'active' : 'link-light' }}">
@@ -162,7 +168,8 @@
 <nav class="navbar fixed-top navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" id="fontp" href="/">
-            <img src="{{ asset('storage/images/logo.png') }}" alt="Logo" width="40" height="40" class="">
+            <img src="{{ asset('storage/images/logo.png') }}" alt="Logo" width="40" height="40"
+                class="">
             PresensiKu - Sistem Presensi Siswa Sekolah
         </a>
     </div>

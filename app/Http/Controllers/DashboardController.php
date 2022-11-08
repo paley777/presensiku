@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Subject;
+use App\Models\Student;
 
 class DashboardController extends Controller
 {
@@ -22,6 +23,7 @@ class DashboardController extends Controller
             'countusers' => User::count(),
             'countkelas' => Kelas::count(),
             'countsubjects' => Subject::count(),
+            'countstudents' => Student::count(),
         ]);
     }
 

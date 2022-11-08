@@ -112,7 +112,7 @@ class StudentController extends Controller
 
         if ($request->file('foto')) {
             if ($student->nama_gambar) {
-                Storage::delete($member['nama_gambar']);
+                Storage::delete($student['foto']);
             }
             $validatedData['foto'] = $request->file('foto')->store('students_profile');
         }

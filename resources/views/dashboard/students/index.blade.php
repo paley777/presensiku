@@ -81,6 +81,14 @@
                             <td>
                                 <a href="/dashboard/students/{{ $student->id }}/edit"
                                     class="badge bg-warning border-0">Edit</a>
+                                <form action="/dashboard/datasets/siswa" method="post" class="d-inline">
+                                    @csrf
+                                    <input type="text" id="validationCustom01" class="form-control" name="id_siswa"
+                                        value="{{ $student->id }}" hidden required>
+                                    <button class="badge bg-primary border-0" type="submit">
+                                        Tambah Dataset
+                                    </button>
+                                </form>
                                 <form action="/dashboard/students/{{ $student->id }}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf

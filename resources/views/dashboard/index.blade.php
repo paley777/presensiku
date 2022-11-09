@@ -59,6 +59,22 @@
                     </div>
                 </div>
             </div>
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" id="fontheader2">{{ $countdatasets }}</h5>
+                        <p class="card-text">Jumlah Dataset terdata</p>
+                        <p class="card-text"><small class="text-muted">Last refresh page</small></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" id="fontheader2">{{ $countpresences }}</h5>
+                        <p class="card-text">Jumlah Presensi terdata</p>
+                        <p class="card-text"><small class="text-muted">Last refresh page</small></p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="card-footer text-muted">
             @presensiku

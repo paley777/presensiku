@@ -12,7 +12,7 @@
 
 
     .footer-20192 {
-        position: relative;
+   
         color: #fff;
         padding: 5em 0;
         background-image: linear-gradient(to top, #12145c 0%, #1d52a6 100%);
@@ -75,15 +75,6 @@
         color: #a6aabe;
     }
 
-    .footer-20192 .cta {
-        -webkit-box-shadow: -20px -20px 0 0 rgba(54, 36, 134, 0.891);
-        box-shadow: -20px -20px 0 0 rgba(56, 62, 69, 0.2);
-        padding: 20px;
-        background-image: linear-gradient(to top, #fbff00 0%, #ffc400 100%);
-        top: -150px;
-        position: relative;
-    }
-
     .footer-20192 .cta h2,
     .footer-20192 .cta h3 {
         line-height: 1.5;
@@ -108,7 +99,7 @@
         font-size: 1rem !important;
     }
 </style>
-<footer class="footer-20192">
+<footer class="fixed-bottom footer-20192">
     <div class="pattern">
         <div class="site-section">
             <div class="container">

@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Subject;
 use App\Models\Student;
+use App\Models\Dataset;
+use App\Models\Presensi;
 
 class DashboardController extends Controller
 {
@@ -24,6 +26,8 @@ class DashboardController extends Controller
             'countkelas' => Kelas::count(),
             'countsubjects' => Subject::count(),
             'countstudents' => Student::count(),
+            'countdatasets' => Dataset::count(),
+            'countpresences' => Presensi::count(),
         ]);
     }
 

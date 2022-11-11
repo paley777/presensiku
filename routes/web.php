@@ -24,6 +24,7 @@ use App\Http\Controllers\ReportController;
 
 //Landing
 Route::get('/', [LandingController::class, 'index']);
+Route::get('/login', [LandingController::class, 'login']);
 Route::post('/login', [LandingController::class, 'authenticate'])->name('login');
 
 //logout
@@ -48,3 +49,7 @@ Route::post('/dashboard/presences/save', [PresensiController::class, 'save'])->m
 
 //print
 Route::post('/dashboard/reports/print', [ReportController::class, 'print'])->middleware('auth');
+
+// Face Recognition
+Route::get('/facerecognition', [PresensiController::class, 'faceindex']);
+Route::post('/recognize', [PresensiController::class, 'recognize']);

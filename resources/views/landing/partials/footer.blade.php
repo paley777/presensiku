@@ -99,7 +99,7 @@
         font-size: 1rem !important;
     }
 </style>
-<footer class="fixed-bottom footer-20192">
+<footer class=" footer-20192">
     <div class="pattern">
         <div class="site-section">
             <div class="container">

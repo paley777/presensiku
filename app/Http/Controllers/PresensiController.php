@@ -34,6 +34,22 @@ class PresensiController extends Controller
                 ->withQueryString(),
         ]);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function faceindex()
+    {
+        return view('landing.presences.index', [
+            'presences' => Presensi::orderBy('created_at', 'desc')
+                ->filter(request(['search']))
+                ->paginate(5)
+                ->withQueryString(),
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +65,61 @@ class PresensiController extends Controller
             'subjects' => Subject::where('id', $presence->id_mapel)->get(),
             'students' => Student::where('id_kelas', $request->id_kelas)->get(),
             'presence' => Presensi::where('id', $request->id)->first(),
+            'reports' => Report::where('id_presensi', $request->id)->get(),
         ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function recognize(Request $request)
+    {
+        $check = $request->console;
+        $presence = Presensi::where('id', $request->id_presensi)->first();
+        $a = str_replace('"', '', $check);
+        $b = explode(' ', $a);
+
+        if (array_key_exists(1, $b)) {
+            $find = Student::where('id', $b[1])->first();
+            if (
+                Report::where('id_presensi', $presence->id)
+                    ->where('id_siswa', $find->id)
+                    ->exists()
+            ) {
+                return view('landing.presences.index', [
+                    'active' => 'Presensi Gagal dikarenakan presensi telah ditambahkan sebelumnya.',
+                    'presences' => Presensi::orderBy('created_at', 'desc')
+                        ->filter(request(['search']))
+                        ->paginate(5)
+                        ->withQueryString(),
+                ]);
+            } else {
+                $find = Student::where('id', $b[1])->first();
+                $validatedData['id_presensi'] = $presence->id;
+                $validatedData['nama_presensi'] = $presence->nama_presensi;
+                $validatedData['id_siswa'] = $find->id;
+                $validatedData['status'] = 'Hadir';
+                Report::create($validatedData);
+
+                return view('landing.presences.index', [
+                    'active' => 'Presensi telah ditambahkan!',
+                    'presences' => Presensi::orderBy('created_at', 'desc')
+                        ->filter(request(['search']))
+                        ->paginate(5)
+                        ->withQueryString(),
+                ]);
+            }
+        } else {
+            return view('landing.presences.index', [
+                'active' => 'Presensi Gagal dikarenakan wajah tidak terdeteksi di dalam database, harap presensi ulang dengan foto yang sesuai dan lebih baik!',
+                'presences' => Presensi::orderBy('created_at', 'desc')
+                    ->filter(request(['search']))
+                    ->paginate(5)
+                    ->withQueryString(),
+            ]);
+        }
     }
 
     /**

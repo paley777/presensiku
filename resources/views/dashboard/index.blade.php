@@ -32,28 +32,28 @@
             <div class="card-group">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">{{ $countsubjects }}</h5>
+                        <h5 class="card-title" id="fontheader2">{{ $countsubjects }} <i class="bi bi-book"></i></h5>
                         <p class="card-text">Jumlah mata pelajaran terdata</p>
                         <p class="card-text"><small class="text-muted">Last refresh page</small></p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">{{ $countkelas }}</h5>
+                        <h5 class="card-title" id="fontheader2">{{ $countkelas }} <i class="bi bi-exclude"></i></h5>
                         <p class="card-text">Jumlah kelas terdata</p>
                         <p class="card-text"><small class="text-muted">Last refresh page</small></p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">{{ $countusers }}</h5>
+                        <h5 class="card-title" id="fontheader2">{{ $countusers }} <i class="bi bi-people"></i></h5>
                         <p class="card-text">Jumlah akun terdata</p>
                         <p class="card-text"><small class="text-muted">Last refresh page</small></p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">{{ $countstudents }}</h5>
+                        <h5 class="card-title" id="fontheader2">{{ $countstudents }} <i class="bi bi-people"></i></h5>
                         <p class="card-text">Jumlah Siswa terdata</p>
                         <p class="card-text"><small class="text-muted">Last refresh page</small></p>
                     </div>
@@ -62,14 +62,14 @@
             <div class="card-group">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">{{ $countdatasets }}</h5>
+                        <h5 class="card-title" id="fontheader2">{{ $countdatasets }} <i class="bi bi-pie-chart"></i></h5>
                         <p class="card-text">Jumlah Dataset terdata</p>
                         <p class="card-text"><small class="text-muted">Last refresh page</small></p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">{{ $countpresences }}</h5>
+                        <h5 class="card-title" id="fontheader2">{{ $countpresences }} <i class="bi bi-card-list"></i></h5>
                         <p class="card-text">Jumlah Presensi terdata</p>
                         <p class="card-text"><small class="text-muted">Last refresh page</small></p>
                     </div>

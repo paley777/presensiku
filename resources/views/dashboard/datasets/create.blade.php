@@ -53,43 +53,62 @@
                 </div>
                 <div class="col-md-9 position-relative">
                     <label for="validationCustom01" class="form-label">Nama Siswa<span class="text-danger">*</span></label>
-                    <input type="text" id="validationCustom01" class="form-control" name="fullname"
-                        placeholder="Isi Nama Siswa" value="{{ $student->fullname }}" required readonly>
-                    <div class="invalid-tooltip">
-                        Isi Nama Siswa.
-                    </div>
+                    <input type="text" class="form-control" name="fullname" placeholder="Isi Nama Siswa"
+                        value="{{ $student->fullname }}" required readonly>
+                    <input type="hidden" class="form-control" id="fullname" placeholder="Isi Nama Siswa"
+                        value="{{ $student->id }} {{ $student->id }} {{ $student->id }}" required readonly>
                 </div>
                 <hr>
                 <div class="col-md-12 position-relative">
-                    <label for="validationCustom01" class="form-label">Dataset Siswa (Format .PNG)<span
+                    <label for="validationCustom01" class="form-label">Dataset Siswa<span
                             class="text-danger">*</span></label>
                 </div>
                 <div class="col-md-4 position-relative">
                     <label for="validationCustom01" class="form-label">Dataset #1<span class="text-danger">*</span></label>
-                    <input class="form-control" type="file" accept=".png" id="image" name="dataset1" required>
+                    <input class="form-control" id="dataset1" type="file" accept="image/*" id="image"
+                        name="dataset1" required>
                     <div class="invalid-tooltip">
                         Isi Dataset Siswa.
                     </div>
                 </div>
                 <div class="col-md-4 position-relative">
                     <label for="validationCustom01" class="form-label">Dataset #2<span class="text-danger">*</span></label>
-                    <input class="form-control" type="file" accept=".png" id="image" name="dataset2" required>
+                    <input class="form-control" type="file" id="dataset2" accept="image/*" id="image"
+                        name="dataset2" required>
                     <div class="invalid-tooltip">
                         Isi Dataset Siswa.
                     </div>
                 </div>
                 <div class="col-md-4 position-relative">
                     <label for="validationCustom01" class="form-label">Dataset #3<span class="text-danger">*</span></label>
-                    <input class="form-control" type="file" accept=".png" id="image" name="dataset3" required>
+                    <input class="form-control" type="file" id="dataset3" accept="image/*" id="image"
+                        name="dataset3" required>
                     <div class="invalid-tooltip">
                         Isi Dataset Siswa.
                     </div>
                 </div>
+                <div class="col-md-6 position-relative">
+                    <label for="validationCustom01" class="form-label">Console<span class="text-danger">*</span></label>
+                    <textarea class="form-control" id="output" readonly required id="floatingTextarea2" style="height: 200px"></textarea>
+                </div>
+                <div class="col-md-6 position-relative">
+                    <label for="validationCustom01" class="form-label">Submit Dataset ke API<span
+                            class="text-danger">*</span></label>
+                    <p class="text-justify">
+                        Pastikan tiga foto telah terinput ke masing-masing input field. Klik tombol dibawah
+                        ini untuk mengunggah dataset ke API. (KLIK SIMPAN DATA KE API TERLEBIH DAHULU SEBELUM SIMPAN DATA KE
+                        SISTEM).
+                    </p>
+                    <button class="btn btn-outline-primary" type="button" onclick="myFunction()">
+                        Simpan Data ke API
+                    </button>
+                </div>
                 <p>
                     (Wajib terisi untuk kolom dengan tanda "<span class="text-danger">*</span>").
                 </p>
+
                 <button class="btn btn-outline-primary" type="submit">
-                    Simpan Data
+                    Simpan Data ke Sistem
                 </button>
             </form>
         </div>
@@ -97,20 +116,39 @@
             @presensiku
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
     <script>
-        function previewImage() {
-            const image = document.querySelector('#image');
-            const imgPreview = document.querySelector('.img-preview');
+        function myFunction() {
+            var fullname = document.getElementById('fullname').value;
+            var image1 = document.getElementById('dataset1').files[0];
+            var image2 = document.getElementById('dataset2').files[0];
+            var image3 = document.getElementById('dataset3').files[0];
+            const form = new FormData();
+            form.append("face_image", image1, "image1.PNG");
+            form.append("additional_face_image_0", image2, "image2.PNG");
+            form.append("additional_face_image_1", image3, "image3.PNG");
 
-            imgPreview.style.display = 'block';
+            const settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://face-recognition18.p.rapidapi.com/register_face",
+                "method": "POST",
+                "headers": {
+                    "x-face-uid": fullname,
+                    "X-RapidAPI-Key": "8dabe2d056msh76be64041335aa8p11e3fajsn59c87fbbfa0c",
+                    "X-RapidAPI-Host": "face-recognition18.p.rapidapi.com"
+                },
+                "processData": false,
+                "contentType": false,
+                "mimeType": "multipart/form-data",
+                "data": form
+            };
 
-            const oFReader = new FileReader();
-
-            oFReader.readAsDataURL(image.files[0]);
-
-            oFReader.onload = function(oFREvent) {
-                imgPreview.src = oFREvent.target.result;
-            }
+            $.ajax(settings).done(function(response) {
+                var myArray = $.makeArray(response);
+                document.getElementById("output").value = myArray;
+            });
         }
     </script>
     <script>
@@ -134,24 +172,4 @@
             })
         })()
     </script>
-    {{-- <script defer src="/js/face-api.min.js"></script>
-    <script defer src="/js/script.js"></script> --}}
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"></script>
-    <script language="JavaScript">
-        Webcam.set({
-            width: 490,
-            height: 350,
-            image_format: 'png',
-            png_quality: 100
-        });
-
-        Webcam.attach('#my_camera');
-
-        function take_snapshot() {
-            Webcam.snap(function(data_uri) {
-                $(".image-tag").val(data_uri);
-                document.getElementById('results').innerHTML = '<img name=gambar src="' + data_uri + '"/>';
-            });
-        }
-    </script> --}}
 @endsection

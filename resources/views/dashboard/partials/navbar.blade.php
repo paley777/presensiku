@@ -124,41 +124,41 @@
             @if (Auth()->user()->role === 'Administrator')
                 <li>
                     <a href="/dashboard/users" class="nav-link {{ $active === 'users' ? 'active' : 'link-light' }}">
-                        <i class="bi bi-flag-fill"></i> Manajemen Akun
+                        <i class="bi bi-people-fill"></i></i> Manajemen Akun
                     </a>
                 </li>
                 <li>
                     <a href="/dashboard/kelas" class="nav-link {{ $active === 'kelas' ? 'active' : 'link-light' }}">
-                        <i class="bi bi-newspaper"></i> Manajemen Kelas
+                        <i class="bi bi-exclude"></i></i> Manajemen Kelas
                     </a>
                 </li>
                 <li>
                     <a href="/dashboard/subjects"
                         class="nav-link {{ $active === 'subjects' ? 'active' : 'link-light' }}">
-                        <i class="bi bi-newspaper"></i> Manajemen Mata Pelajaran
+                        <i class="bi bi-book-fill"></i></i> Manajemen Mata Pelajaran
                     </a>
                 </li>
                 <li>
                     <a href="/dashboard/students"
                         class="nav-link {{ $active === 'students' ? 'active' : 'link-light' }}">
-                        <i class="bi bi-newspaper"></i> Manajemen Siswa
+                        <i class="bi bi-people-fill"></i> Manajemen Siswa
                     </a>
                 </li>
                 <li>
                     <a href="/dashboard/datasets"
                         class="nav-link {{ $active === 'datasets' ? 'active' : 'link-light' }}">
-                        <i class="bi bi-newspaper"></i> Manajemen Dataset
+                        <i class="bi bi-pie-chart-fill"></i> Manajemen Dataset
                     </a>
                 </li>
             @endif
             <li>
                 <a href="/dashboard/presences" class="nav-link {{ $active === 'presences' ? 'active' : 'link-light' }}">
-                    <i class="bi bi-person-video2"></i> Manajemen Presensi
+                    <i class="bi bi-card-list"></i> Manajemen Presensi
                 </a>
             </li>
             <li>
                 <a href="/dashboard/reports" class="nav-link {{ $active === 'reports' ? 'active' : 'link-light' }}">
-                    <i class="bi bi-person-video2"></i> Manajemen Rekapitulasi
+                    <i class="bi bi-card-list"></i> Manajemen Rekapitulasi
                 </a>
             </li>
         </ul>
@@ -167,7 +167,7 @@
 </main>
 <nav class="navbar fixed-top navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" id="fontp" href="/">
+        <a class="navbar-brand" id="fontp" href="#">
             <img src="{{ asset('storage/images/logo.png') }}" alt="Logo" width="40" height="40"
                 class="">
             PresensiKu - Sistem Presensi Siswa Sekolah

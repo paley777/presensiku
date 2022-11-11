@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Kelas;
+use App\Models\Dataset;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use Illuminate\Http\Request;
@@ -130,6 +131,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
+        $id = Dataset::where('id_student', $student->id)->first();
+        Dataset::destroy($id->id);
         if ($student->foto) {
             Storage::delete($student['foto']);
         }

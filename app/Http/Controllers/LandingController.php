@@ -16,6 +16,13 @@ class LandingController extends Controller
             'active' => 'index',
         ]);
     }
+    //Homepage
+    public function login()
+    {
+        return view('landing.login', [
+            'active' => 'index',
+        ]);
+    }
 
     /**
      * Handle an authentication attempt.

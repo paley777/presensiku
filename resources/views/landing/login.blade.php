@@ -39,16 +39,25 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title" id="fontheader">Selamat Datang</h5>
-                    <p class="card-text fontlink">Hai! PresensiKu adalah sistem presensi yang dilengkapi dengan fitur
-                        pengenalan wajah.</p>
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <a href="/login" class="btn btn-primary">Masuk Bagi Guru/Admin <i class="bi bi-arrow-up-right-circle-fill"></i></a>
-                        <a href="/facerecognition" class="btn btn-warning">Presensi dengan Pengenalan Wajah <i class="bi bi-arrow-up-right-circle-fill"></i></a>
-                    </div>
+                    <h5 class="card-title" id="fontheader">Masuk</h5>
+                    <p class="card-text fontlink">Hai! Masuk ke dashboard PresensiKu dengan memasukkan e-mail dan kata sandi
+                        di
+                        bawah ini.</p>
+                    <form method="POST" action="/login" class="fontlink">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">E-mail</label>
+                            <input type="text" name="email" class="form-control"aria-describedby="emailHelp" required>
+                            <div id="emailHelp" class="form-text">Masukkan e-mail anda.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Kata Sandi</label>
+                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Masuk</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <br><br><br>
 @endsection

@@ -1,28 +1,6 @@
 @extends('landing.layouts.main')
 
 @section('container')
-    <style>
-        #fontheader {
-            font-size: 1.563rem !important;
-        }
-
-        #fontheader2 {
-            font-size: 4rem !important;
-        }
-
-        #fontp {
-            font-size: 1.25rem !important;
-        }
-
-        .fontlink {
-            font-size: 1rem !important;
-        }
-
-        .text-justify {
-            text-align: justify;
-        }
-    </style>
-    <br>
     @if (session()->has('loginError'))
         <div class="container">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -31,24 +9,23 @@
             </div>
         </div>
     @endif
-    <div class="card mb-5 mt-5 position-relative top-50 start-50 translate-middle-x"
-        style="max-width: 1300px;max-height:100%;">
-        <div class="row g-0">
-            <div class="col-md-4 d-flex justify-content-center">
-                <img src="{{ asset('storage/images/login.jpg') }}" class="img-fluid" style="width: 100%;object-fit: cover;">
+    <div class="container py-4 py-xl-5" style="font-family: ABeeZee, sans-serif;">
+        <div class="row gy-4 gy-md-0">
+            <div class="col-md-6">
+                <div class="p-xl-5 m-xl-5"><img class="rounded img-fluid w-100 fit-cover" data-aos="fade-right"
+                        style="min-height: 300px;"
+                        src="assets\juicy-man-programmer-writing-code-and-make-web-design-on-a-pc.gif"></div>
             </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title" id="fontheader">Selamat Datang</h5>
-                    <p class="card-text fontlink">Hai! PresensiKu adalah sistem presensi yang dilengkapi dengan fitur
-                        pengenalan wajah.</p>
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <a href="/login" class="btn btn-primary">Masuk Bagi Guru/Admin <i class="bi bi-arrow-up-right-circle-fill"></i></a>
-                        <a href="/facerecognition" class="btn btn-warning">Presensi dengan Pengenalan Wajah <i class="bi bi-arrow-up-right-circle-fill"></i></a>
-                    </div>
+            <div class="col-md-6 d-md-flex align-items-md-center">
+                <div style="max-width: 350px;">
+                    <h2 class="text-uppercase fw-bold" data-aos="zoom-in">selamat datang di sistem presensi siswa</h2>
+                    <p data-aos="zoom-in" class="my-3">Silakan pilih menu di bawah ini, untuk melanjutkan.</p><a
+                        class="btn btn-primary btn-sm me-2" role="button" data-aos="zoom-in"
+                        href="/facerecognition">Presensi
+                        Mandiri</a><a class="btn btn-outline-primary btn-sm" role="button" data-aos="zoom-in"
+                        href="/login">Masuk Sistem</a>
                 </div>
             </div>
         </div>
     </div>
-    <br><br><br>
 @endsection

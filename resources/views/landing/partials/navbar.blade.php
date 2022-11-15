@@ -1,6 +1,7 @@
-<nav class="navbar navbar-light navbar-expand-md py-3" style="color: var(--bs-indigo);font-family: ABeeZee, sans-serif;">
+<nav class="navbar fixed-top navbar-light navbar-expand-md py-3"
+    style="var(--bs-white);font-family: ABeeZee, sans-serif; background: var(--bs-white);">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="#">
+        <a class="navbar-brand d-flex align-items-center" href="/">
             <img src="{{ asset('storage/images/logo.png') }}" alt="Logo" width="40" height="40"
                 class=""><span> PresensiKu - Sistem Presensi Siswa Sekolah</span></a>
         <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span

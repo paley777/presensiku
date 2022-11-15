@@ -1,10 +1,12 @@
-<footer class="text-center" style="font-family: ABeeZee, sans-serif;">
+<footer class="text-center sticky-bottom " style="font-family: ABeeZee, sans-serif; background: var(--bs-white);">
     <div class="container text-muted py-4 py-lg-5">
         <ul class="list-inline">
-            <li class="list-inline-item me-4"><a class="link-secondary" href="#">Kementerian Pendidikan dan
+            <li class="list-inline-item me-4"><a class="link-secondary" href="https://www.kemdikbud.go.id/">Kementerian
+                    Pendidikan dan
                     Kebudayaan
                     Indonesia</a></li>
-            <li class="list-inline-item me-4"><a class="link-secondary" href="#">Pemerintah Daerah Provinsi
+            <li class="list-inline-item me-4"><a class="link-secondary" href="https://bengkuluprov.go.id/">Pemerintah
+                    Daerah Provinsi
                     Bengkulu</a>
             </li>
         </ul>
@@ -27,7 +29,8 @@
                     </svg>
                 </a>
             </li>
-            <li class="list-inline-item"> <a href="https://www.instagram.com/valley_feeds/" target="_blank" rel="noopener noreferrer">
+            <li class="list-inline-item"> <a href="https://www.instagram.com/valley_feeds/" target="_blank"
+                    rel="noopener noreferrer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
                         viewBox="0 0 16 16" class="bi bi-instagram">
                         <path

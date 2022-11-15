@@ -1,83 +1,70 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <style>
-        #fontheader {
-            font-size: 1.563rem !important;
-        }
-
-        #fontheader2 {
-            font-size: 4rem !important;
-        }
-
-        #fontp {
-            font-size: 1.25rem !important;
-        }
-
-        .fontlink {
-            font-size: 1rem !important;
-        }
-
-        .text-justify {
-            text-align: justify;
-        }
-    </style>
-    <div class="card text-center">
-        <div class="card-header fontlink">
-            Dashboard
+    <div class="container py-4 py-xl-5" style="font-family: ABeeZee, sans-serif;">
+        <div class="row" data-aos="zoom-in">
+            <div class="col-md-12">
+                <section class="py-4 py-xl-5">
+                    <div class="container">
+                        <div
+                            class="text-white bg-primary border rounded border-0 border-primary d-flex flex-column justify-content-between flex-lg-row p-4 p-md-5">
+                            <div class="pb-2 pb-lg-1">
+                                <h2 class="fw-bold mb-2">Hai, {{ Auth()->user()->fullname }}</h2>
+                                <p class="mb-0">Kelola sistem presensi siswa hanya di sini. Cek beragam menu yang ada.
+                                </p>
+                            </div>
+                            <form class="d-flex" action="/logout" method="post">
+                                @csrf
+                                <button class="btn btn-light fs-5 py-2 px-4" type="submit">Keluar Akun</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
-        <div class="card-body">
-            <h5 class="card-title" id="fontheader">Selamat Datang di Dashboard PresensiKu</h5>
-            <p class="card-text" id="fontp">Rekapitulasi Sistem PresensiKu di bawah ini</p>
-            <div class="card-group">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">{{ $countsubjects }} <i class="bi bi-book"></i></h5>
-                        <p class="card-text">Jumlah mata pelajaran terdata</p>
-                        <p class="card-text"><small class="text-muted">Last refresh page</small></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">{{ $countkelas }} <i class="bi bi-exclude"></i></h5>
-                        <p class="card-text">Jumlah kelas terdata</p>
-                        <p class="card-text"><small class="text-muted">Last refresh page</small></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">{{ $countusers }} <i class="bi bi-people"></i></h5>
-                        <p class="card-text">Jumlah akun terdata</p>
-                        <p class="card-text"><small class="text-muted">Last refresh page</small></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">{{ $countstudents }} <i class="bi bi-people"></i></h5>
-                        <p class="card-text">Jumlah Siswa terdata</p>
-                        <p class="card-text"><small class="text-muted">Last refresh page</small></p>
+        <div class="row" data-aos="zoom-in">
+            <div class="col-md-12">
+                <div class="text-center text-white-50 bg-primary border rounded border-0 p-3">
+                    <div class="row row-cols-2 row-cols-md-3">
+                        <div class="col-lg-3">
+                            <div class="p-3">
+                                <h4 class="display-5 fw-bold text-white mb-0">{{ $countstudents }}</h4>
+                                <p class="mb-0">Jumlah siswa terdata</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3">
+                                <h4 class="display-5 fw-bold text-white mb-0">{{ $countusers }}</h4>
+                                <p class="mb-0">Jumlah akun terdata</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3">
+                                <h4 class="display-5 fw-bold text-white mb-0">{{ $countkelas }}</h4>
+                                <p class="mb-0">Jumlah kelas terdata</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3">
+                                <h4 class="display-5 fw-bold text-white mb-0">{{ $countsubjects }}</h4>
+                                <p class="mb-0">Jumlah mata pelajaran terdata</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3">
+                                <h4 class="display-5 fw-bold text-white mb-0">{{ $countdatasets }}</h4>
+                                <p class="mb-0">Jumlah dataset terdata</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3">
+                                <h4 class="display-5 fw-bold text-white mb-0">{{ $countpresences }}</h4>
+                                <p class="mb-0">Jumlah presensi terdata</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card-group">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">{{ $countdatasets }} <i class="bi bi-pie-chart"></i></h5>
-                        <p class="card-text">Jumlah Dataset terdata</p>
-                        <p class="card-text"><small class="text-muted">Last refresh page</small></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title" id="fontheader2">{{ $countpresences }} <i class="bi bi-card-list"></i></h5>
-                        <p class="card-text">Jumlah Presensi terdata</p>
-                        <p class="card-text"><small class="text-muted">Last refresh page</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card-footer text-muted">
-            @presensiku
         </div>
     </div>
 @endsection

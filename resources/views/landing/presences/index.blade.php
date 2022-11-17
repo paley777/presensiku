@@ -23,7 +23,6 @@
         }
     </style>
     <br>
-
     <div class="card mb-5 mt-5 position-relative top-50 start-50 translate-middle-x"
         style="max-width: 1300px;max-height:100%;">
         @isset($active)

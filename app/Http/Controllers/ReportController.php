@@ -24,7 +24,7 @@ class ReportController extends Controller
     public function index()
     {
         return view('dashboard.reports.index', [
-            'active' => 'reports',
+            'active' => 'manajemen',
             'kelas' => Kelas::orderBy('created_at', 'desc')->get(),
             'users' => User::orderBy('created_at', 'desc')->get(),
             'subjects' => Subject::orderBy('created_at', 'desc')->get(),
@@ -40,7 +40,7 @@ class ReportController extends Controller
     {
         $presence = Presensi::where('id', $request->id)->first();
         return view('dashboard.reports.print', [
-            'active' => 'reports',
+            'active' => 'manajemen',
             'kelas' => Kelas::where('id', $presence->id_kelas)->first(),
             'users' => User::where('id', $presence->id_user)->first(),
             'subjects' => Subject::where('id', $presence->id_mapel)->first(),

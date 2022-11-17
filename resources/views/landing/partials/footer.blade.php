@@ -1,4 +1,4 @@
-<footer class="text-center sticky-bottom " style="font-family: ABeeZee, sans-serif; background: var(--bs-white);">
+<footer class="text-center fixed-bottom " style="font-family: ABeeZee, sans-serif; background: var(--bs-white);">
     <div class="container text-muted py-4 py-lg-5">
         <ul class="list-inline">
             <li class="list-inline-item me-4"><a class="link-secondary" href="https://www.kemdikbud.go.id/">Kementerian

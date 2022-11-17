@@ -15,7 +15,7 @@ class KelasController extends Controller
     public function index()
     {
         return view('dashboard.kelas.index', [
-            'active' => 'kelas',
+            'active' => 'manajemen',
             'kelas' => Kelas::orderBy('created_at', 'desc')
                 ->filter(request(['search']))
                 ->paginate(15)
@@ -31,7 +31,7 @@ class KelasController extends Controller
     public function create()
     {
         return view('dashboard.kelas.create', [
-            'active' => 'kelas',
+            'active' => 'manajemen',
         ]);
     }
 
@@ -73,7 +73,7 @@ class KelasController extends Controller
     {
         return view('dashboard.kelas.edit', [
             'kela' => $kela,
-            'active' => 'kelas',
+            'active' => 'manajemen',
         ]);
     }
 

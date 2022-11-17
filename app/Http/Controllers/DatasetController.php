@@ -22,7 +22,7 @@ class DatasetController extends Controller
     public function index()
     {
         return view('dashboard.datasets.index', [
-            'active' => 'datasets',
+            'active' => 'manajemen',
             'datasets' => Dataset::orderBy('created_at', 'desc')
                 ->filter(request(['search']))
                 ->paginate(5)
@@ -40,7 +40,7 @@ class DatasetController extends Controller
             return redirect('/dashboard/students')->with('success', 'Dataset Telah Ada.');
         } else {
             return view('dashboard.datasets.create', [
-                'active' => 'datasets',
+                'active' => 'manajemen',
                 'student' => Student::where('id', $request->id_siswa)->first(),
             ]);
         }
@@ -100,7 +100,7 @@ class DatasetController extends Controller
     {
         return view('dashboard.datasets.edit', [
             'dataset' => $dataset,
-            'active' => 'datasets',
+            'active' => 'manajemen',
             'kelas' => Kelas::orderBy('created_at', 'desc')->get(),
         ]);
     }

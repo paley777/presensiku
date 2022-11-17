@@ -21,7 +21,7 @@ class StudentController extends Controller
     public function index()
     {
         return view('dashboard.students.index', [
-            'active' => 'students',
+            'active' => 'manajemen',
             'kelas' => Kelas::orderBy('created_at', 'desc')->get(),
             'students' => Student::orderBy('created_at', 'desc')
                 ->filter(request(['search']))
@@ -39,7 +39,7 @@ class StudentController extends Controller
     {
         return view('dashboard.students.create', [
             'kelas' => Kelas::orderBy('created_at', 'desc')->get(),
-            'active' => 'students',
+            'active' => 'manajemen',
         ]);
     }
 
@@ -85,7 +85,7 @@ class StudentController extends Controller
     {
         return view('dashboard.students.edit', [
             'student' => $student,
-            'active' => 'students',
+            'active' => 'manajemen',
             'kelas' => Kelas::orderBy('created_at', 'desc')->get(),
         ]);
     }
@@ -132,7 +132,12 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $id = Dataset::where('id_student', $student->id)->first();
-        Dataset::destroy($id->id);
+
+        if (blank($id)) {
+        } else {
+            Dataset::destroy($id->id);
+        }
+
         if ($student->foto) {
             Storage::delete($student['foto']);
         }

@@ -1,45 +1,18 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <style>
-        #fontheader {
-            font-size: 1.563rem !important;
-        }
-
-        #fontheader2 {
-            font-size: 4rem !important;
-        }
-
-        #fontp {
-            font-size: 1.25rem !important;
-        }
-
-        .fontlink {
-            font-size: 1rem !important;
-        }
-
-        .text-justify {
-            text-align: justify;
-        }
-    </style>
-    <style>
-        canvas {
-            position: absolute;
-        }
-    </style>
-    <div class="card">
-        @if (session()->has('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>{{ session('success') }}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="container" style="font-family: ABeeZee, sans-serif;">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                @if (session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ session('success') }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                <h2>Tambah Dataset {{ $student->fullname }}</h2>
+                <p class="w-lg-50">Isi formulir di bawah ini.</p>
             </div>
-        @endif
-        <div class="card-header fontlink  text-center">
-            Dashboard
-        </div>
-        <div class="card-body ">
-            <h5 class="card-title  text-center" id="fontheader">Tambah Dataset {{ $student->fullname }}</h5>
-            <p class="card-text" id="fontp"></p>
             <form class="row g-2 needs-validation" method="post" action="/dashboard/datasets" enctype="multipart/form-data"
                 novalidate>
                 @csrf
@@ -96,7 +69,8 @@
                             class="text-danger">*</span></label>
                     <p class="text-justify">
                         Pastikan tiga foto telah terinput ke masing-masing input field. Klik tombol dibawah
-                        ini untuk mengunggah dataset ke API. (KLIK SIMPAN DATA KE API TERLEBIH DAHULU SEBELUM SIMPAN DATA KE
+                        ini untuk mengunggah dataset ke API. (KLIK SIMPAN DATA KE API TERLEBIH DAHULU SEBELUM SIMPAN
+                        DATA KE
                         SISTEM).
                     </p>
                     <button class="btn btn-outline-primary" type="button" onclick="myFunction()">
@@ -111,9 +85,6 @@
                     Simpan Data ke Sistem
                 </button>
             </form>
-        </div>
-        <div class="card-footer text-muted">
-            @presensiku
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="

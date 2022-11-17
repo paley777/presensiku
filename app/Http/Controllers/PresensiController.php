@@ -24,7 +24,7 @@ class PresensiController extends Controller
     public function index()
     {
         return view('dashboard.presences.index', [
-            'active' => 'presences',
+            'active' => 'manajemen',
             'kelas' => Kelas::orderBy('created_at', 'desc')->get(),
             'users' => User::orderBy('created_at', 'desc')->get(),
             'subjects' => Subject::orderBy('created_at', 'desc')->get(),
@@ -59,7 +59,7 @@ class PresensiController extends Controller
     {
         $presence = Presensi::where('id', $request->id)->first();
         return view('dashboard.presences.start', [
-            'active' => 'presences',
+            'active' => 'manajemen',
             'kelas' => Kelas::where('id', $presence->id_kelas)->first(),
             'users' => User::where('id', $presence->id_user)->get(),
             'subjects' => Subject::where('id', $presence->id_mapel)->get(),
@@ -132,7 +132,7 @@ class PresensiController extends Controller
         return view('dashboard.presences.create', [
             'kelas' => Kelas::orderBy('created_at', 'desc')->get(),
             'subjects' => Subject::orderBy('created_at', 'desc')->get(),
-            'active' => 'presences',
+            'active' => 'manajemen',
         ]);
     }
 
@@ -201,7 +201,7 @@ class PresensiController extends Controller
     {
         return view('dashboard.presences.edit', [
             'presensi' => $presence,
-            'active' => 'presences',
+            'active' => 'manajemen',
             'kelas' => Kelas::orderBy('created_at', 'desc')->get(),
             'subjects' => Subject::orderBy('created_at', 'desc')->get(),
         ]);

@@ -27,9 +27,4 @@ class Student extends Model
             return $query->where('id_kelas', 'like', '%' . $search . '%');
         });
     }
-
-    public function kelas()
-    {
-        return $this->belongsTo(Kelas::class);
-    }
 }

@@ -25,6 +25,7 @@ use App\Http\Controllers\ReportController;
 //Landing
 Route::get('/', [LandingController::class, 'index']);
 Route::get('/login', [LandingController::class, 'login']);
+Route::get('/about', [LandingController::class, 'about']);
 Route::post('/login', [LandingController::class, 'authenticate'])->name('login');
 
 //logout

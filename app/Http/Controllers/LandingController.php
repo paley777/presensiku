@@ -23,6 +23,13 @@ class LandingController extends Controller
             'active' => 'index',
         ]);
     }
+    //About Page
+    public function about()
+    {
+        return view('landing.about', [
+            'active' => 'index',
+        ]);
+    }
 
     /**
      * Handle an authentication attempt.

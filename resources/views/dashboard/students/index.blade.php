@@ -1,40 +1,18 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <style>
-        #fontheader {
-            font-size: 1.563rem !important;
-        }
-
-        #fontheader2 {
-            font-size: 4rem !important;
-        }
-
-        #fontp {
-            font-size: 1.25rem !important;
-        }
-
-        .fontlink {
-            font-size: 1rem !important;
-        }
-
-        .text-justify {
-            text-align: justify;
-        }
-    </style>
-    <div class="card ">
-        @if (session()->has('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>{{ session('success') }}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="container" style="font-family: ABeeZee, sans-serif;">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                @if (session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ session('success') }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                <h2>Manajemen Siswa</h2>
+                <p class="w-lg-50">Cari, lihat, tambah, ubah dan hapus data.</p>
             </div>
-        @endif
-        <div class="card-header fontlink">
-            Dashboard
-        </div>
-        <div class="card-body">
-            <h5 class="card-title" id="fontheader">Manajemen Siswa</h5>
-            <p class="card-text" id="fontp">Seluruh Siswa terdapat di tabel ini</p>
             <div class="row">
                 <div class="col-9">
                     <form action="/dashboard/students">
@@ -50,7 +28,13 @@
                     </form>
                 </div>
                 <div class="col-3">
-                    <a href="/dashboard/students/create" class="btn text-white bg-primary border-0">+ Tambah Siswa Baru</a>
+                    <a href="/dashboard/students/create" class="btn btn-primary"><svg class="bi bi-plus-circle-fill"
+                            xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z">
+                            </path>
+                        </svg> Tambah Siswa Baru</a>
                 </div>
             </div>
             <table class="table table-hover fontlink">
@@ -108,9 +92,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card-footer text-muted">
-        @presensiku
-    </div>
     </div>
 @endsection

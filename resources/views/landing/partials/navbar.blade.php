@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-light navbar-expand-md py-3"
+<nav class="navbar sticky-top navbar-light navbar-expand-md py-3"
     style="var(--bs-white);font-family: ABeeZee, sans-serif; background: var(--bs-white);">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="/">

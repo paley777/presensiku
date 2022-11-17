@@ -1,40 +1,18 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <style>
-        #fontheader {
-            font-size: 1.563rem !important;
-        }
-
-        #fontheader2 {
-            font-size: 4rem !important;
-        }
-
-        #fontp {
-            font-size: 1.25rem !important;
-        }
-
-        .fontlink {
-            font-size: 1rem !important;
-        }
-
-        .text-justify {
-            text-align: justify;
-        }
-    </style>
-    <div class="card ">
-        @if (session()->has('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>{{ session('success') }}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="container" style="font-family: ABeeZee, sans-serif;">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                @if (session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ session('success') }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                <h2>Manajemen Dataset</h2>
+                <p class="w-lg-50">Cari, lihat, tambah, ubah dan hapus data.</p>
             </div>
-        @endif
-        <div class="card-header fontlink">
-            Dashboard
-        </div>
-        <div class="card-body">
-            <h5 class="card-title" id="fontheader">Manajemen Dataset</h5>
-            <p class="card-text" id="fontp">Seluruh Dataset Wajah Siswa terdapat di tabel ini</p>
             <div class="row">
                 <div class="col-9">
                     <form action="/dashboard/datasets">
@@ -90,9 +68,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card-footer text-muted">
-        @presensiku
-    </div>
     </div>
 @endsection

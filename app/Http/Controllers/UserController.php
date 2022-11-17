@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         if (Auth()->user()->role === 'Administrator') {
             return view('dashboard.users.index', [
-                'active' => 'users',
+                'active' => 'manajemen',
                 'users' => User::orderBy('created_at', 'desc')
                     ->filter(request(['search']))
                     ->paginate(15)
@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         if (Auth()->user()->role === 'Administrator') {
             return view('dashboard.users.create', [
-                'active' => 'users',
+                'active' => 'manajemen',
             ]);
         } else {
             return redirect('/')->with('loginError', 'Anda tidak memiliki otoritas untuk mengakses halaman tersebut. Hubungi admin.');
@@ -89,7 +89,7 @@ class UserController extends Controller
         if (Auth()->user()->role === 'Administrator') {
             return view('dashboard.users.edit', [
                 'user' => $user,
-                'active' => 'users',
+                'active' => 'manajemen',
             ]);
         } else {
             return redirect('/')->with('loginError', 'Anda tidak memiliki otoritas untuk mengakses halaman tersebut. Hubungi admin.');

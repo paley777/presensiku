@@ -1,10 +1,10 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <div class="container py-4 py-xl-5" style="font-family: ABeeZee, sans-serif;">
+    <div class="container" style="font-family: ABeeZee, sans-serif;">
         <div class="row" data-aos="zoom-in">
             <div class="col-md-12">
-                <section class="py-4 py-xl-5">
+                <section class="py-xl-5">
                     <div class="container">
                         <div
                             class="text-white bg-primary border rounded border-0 border-primary d-flex flex-column justify-content-between flex-lg-row p-4 p-md-5">

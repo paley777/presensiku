@@ -1,15 +1,15 @@
 @extends('landing.layouts.main')
 
 @section('container')
-    @if (session()->has('loginError'))
-        <div class="container">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ session('loginError') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="container">
+        @if (session()->has('loginError'))
+            <div class="container">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('loginError') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             </div>
-        </div>
-    @endif
-    <div class="container py-4 py-xl-5">
+        @endif
         <div class="row gy-4 gy-md-0">
             <div
                 class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">

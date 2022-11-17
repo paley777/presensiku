@@ -1,7 +1,7 @@
 @extends('landing.layouts.main')
 
 @section('container')
-    <div class="container py-4 py-xl-5" style="font-family: ABeeZee, sans-serif;">
+    <div class="container" style="font-family: ABeeZee, sans-serif;">
         @if (session()->has('loginError'))
             <div class="container">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">

@@ -16,7 +16,7 @@ class SubjectController extends Controller
     public function index()
     {
         return view('dashboard.subjects.index', [
-            'active' => 'subjects',
+            'active' => 'manajemen',
             'subjects' => Subject::orderBy('created_at', 'desc')
                 ->filter(request(['search']))
                 ->paginate(15)
@@ -32,7 +32,7 @@ class SubjectController extends Controller
     public function create()
     {
         return view('dashboard.subjects.create', [
-            'active' => 'subjects',
+            'active' => 'manajemen',
         ]);
     }
 
@@ -73,7 +73,7 @@ class SubjectController extends Controller
     {
         return view('dashboard.subjects.edit', [
             'subject' => $subject,
-            'active' => 'subjects',
+            'active' => 'manajemen',
         ]);
     }
 

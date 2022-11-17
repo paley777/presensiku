@@ -39,6 +39,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [];
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {

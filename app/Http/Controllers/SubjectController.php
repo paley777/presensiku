@@ -45,7 +45,7 @@ class SubjectController extends Controller
     public function store(StoreSubjectRequest $request)
     {
         $validatedData = $request->validate([
-            'nama_mapel' => 'required',
+            'nama_mapel' => 'required|unique:subjects',
         ]);
         Subject::create($validatedData);
 
@@ -86,14 +86,25 @@ class SubjectController extends Controller
      */
     public function update(UpdateSubjectRequest $request, Subject $subject)
     {
-        $rules = [
-            'id' => 'required',
-            'nama_mapel' => 'required',
-        ];
-        $validatedData = $request->validate($rules);
-        Subject::where('id', $validatedData['id'])->update($validatedData);
+        if ($request->nama_mapel == $subject->nama_mapel) {
+            $rules = [
+                'id' => 'required',
+                'nama_mapel' => 'required',
+            ];
+            $validatedData = $request->validate($rules);
+            Subject::where('id', $validatedData['id'])->update($validatedData);
 
-        return redirect('/dashboard/subjects')->with('success', 'Mata Pelajaran telah diubah!.');
+            return redirect('/dashboard/subjects')->with('success', 'Mata Pelajaran telah diubah!.');
+        } else {
+            $rules = [
+                'id' => 'required',
+                'nama_mapel' => 'required|unique:subjects',
+            ];
+            $validatedData = $request->validate($rules);
+            Subject::where('id', $validatedData['id'])->update($validatedData);
+
+            return redirect('/dashboard/subjects')->with('success', 'Mata Pelajaran telah diubah!.');
+        }
     }
 
     /**

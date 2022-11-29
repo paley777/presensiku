@@ -27,8 +27,4 @@ class Presensi extends Model
             return $query->where('nama_presensi', 'like', '%' . $search . '%');
         });
     }
-    public function kelas()
-    {
-        return $this->belongsTo(Kelas::class);
-    }
 }

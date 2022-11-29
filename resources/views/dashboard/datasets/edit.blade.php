@@ -2,6 +2,15 @@
 
 @section('container')
     <div class="container" style="font-family: ABeeZee, sans-serif;">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="row mb-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
                 @if (session()->has('success'))
@@ -14,32 +23,23 @@
                 <p class="w-lg-50">Isi formulir di bawah ini.</p>
             </div>
             <form class="row g-2 needs-validation" method="post" action="/dashboard/datasets/{{ $dataset->id }}"
-                enctype="multipart/form-data" novalidate>
+                enctype="multipart/form-data">
                 @method('put')
                 @csrf
                 <div class="col-md-3 position-relative">
                     <label for="validationCustom01" class="form-label">ID Dataset.<span class="text-danger">*</span></label>
                     <input type="text" id="validationCustom01" class="form-control" name="id" placeholder="Isi ID."
                         value="{{ $dataset->id }}" readonly required>
-                    <div class="invalid-tooltip">
-                        Isi ID.
-                    </div>
                 </div>
                 <div class="col-md-3 position-relative">
                     <label for="validationCustom01" class="form-label">ID Siswa.<span class="text-danger">*</span></label>
                     <input type="text" id="validationCustom01" class="form-control" name="id_student"
                         placeholder="Isi ID." value="{{ $dataset->id_student }}" readonly required>
-                    <div class="invalid-tooltip">
-                        Isi ID.
-                    </div>
                 </div>
                 <div class="col-md-6 position-relative">
                     <label for="validationCustom01" class="form-label">Nama Siswa<span class="text-danger">*</span></label>
                     <input type="text" id="fullname" class="form-control" name="fullname" placeholder="Isi Nama Siswa"
                         value="{{ $dataset->fullname }}" required readonly>
-                    <div class="invalid-tooltip">
-                        Isi Nama Siswa.
-                    </div>
                 </div>
                 <hr>
                 <div class="col-md-12 position-relative">
@@ -49,27 +49,18 @@
                 <div class="col-md-4 position-relative">
                     <label for="validationCustom01" class="form-label">Dataset #1<span class="text-danger">*</span></label>
                     <input class="form-control" type="file" accept="image/*" id="dataset1" name="dataset1" required>
-                    <div class="invalid-tooltip">
-                        Isi Dataset Siswa.
-                    </div>
                 </div>
                 <div class="col-md-4 position-relative">
                     <label for="validationCustom01" class="form-label">Dataset #2<span class="text-danger">*</span></label>
                     <input class="form-control" type="file" accept="image/*" id="dataset2" name="dataset2" required>
-                    <div class="invalid-tooltip">
-                        Isi Dataset Siswa.
-                    </div>
                 </div>
                 <div class="col-md-4 position-relative">
                     <label for="validationCustom01" class="form-label">Dataset #3<span class="text-danger">*</span></label>
                     <input class="form-control" type="file" accept="image/*" id="dataset3" name="dataset3" required>
-                    <div class="invalid-tooltip">
-                        Isi Dataset Siswa.
-                    </div>
                 </div>
                 <div class="col-md-6 position-relative">
                     <label for="validationCustom01" class="form-label">Console<span class="text-danger">*</span></label>
-                    <textarea class="form-control" id="output" readonly required style="height: 200px"></textarea>
+                    <textarea class="form-control" id="output" style="height: 200px" required></textarea>
                 </div>
                 <div class="col-md-6 position-relative">
                     <label for="validationCustom01" class="form-label">Submit Dataset ke API<span
@@ -126,26 +117,5 @@
                 document.getElementById("output").value = myArray;
             });
         }
-    </script>
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (() => {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
     </script>
 @endsection

@@ -2,6 +2,15 @@
 
 @section('container')
     <div class="container" style="font-family: ABeeZee, sans-serif;">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="row mb-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
                 @if (session()->has('success'))
@@ -31,32 +40,25 @@
                     @foreach ($students as $student)
                         <form class="row g-2 needs-validation" method="post" action="/dashboard/presences/save">
                             @csrf
-                            @foreach ($reports as $report)
-                                @if ($student->id == $report->id_siswa)
-                                @else
-                                    <td>
-                                        <input type="text" class="form-control" name="id_presensi[]"
-                                            value="{{ $presence->id }}" readonly hidden required>
-                                        <input type="text" class="form-control" name="nama_presensi[]"
-                                            value="{{ $presence->nama_presensi }}" readonly hidden required>
+                            <td>
+                                <input type="text" class="form-control" name="id_presensi[]" value="{{ $presence->id }}"
+                                    readonly hidden required>
+                                <input type="text" class="form-control" name="nama_presensi[]"
+                                    value="{{ $presence->nama_presensi }}" readonly hidden required>
 
-                                        <input type="text" class="form-control" name="id_siswa[]"
-                                            value="{{ $student->id }}" readonly required hidden>
+                                <input type="text" class="form-control" name="id_siswa[]" value="{{ $student->id }}"
+                                    readonly required hidden>
 
-                                        <input type="text" class="form-control" value="{{ $student->fullname }}" readonly
-                                            required>
-                                    </td>
-                                    <td><input type="text" class="form-control" value="{{ $student->nisn }}" readonly
-                                            required></td>
-                                    <td>
-                                        <input type="radio" name="status[{{ $a++ }}]"
-                                            value="Hadir">Hadir</input>
-                                        <input type="radio" name="status[{{ $b++ }}]" value="Izin">Izin</input>
-                                        <input type="radio" name="status[{{ $c++ }}]"
-                                            value="Alpa">Alpa</input>
-                                    </td>
-                                @endif
-                            @endforeach
+                                <input type="text" class="form-control" value="{{ $student->fullname }}" readonly
+                                    required>
+                            </td>
+                            <td><input type="text" class="form-control" value="{{ $student->nisn }}" readonly required>
+                            </td>
+                            <td>
+                                <input type="radio" required name="status[{{ $a++ }}]" value="Hadir">Hadir</input>
+                                <input type="radio" name="status[{{ $b++ }}]" value="Izin">Izin</input>
+                                <input type="radio" name="status[{{ $c++ }}]" value="Alpa">Alpa</input>
+                            </td>
                 </tr>
                 @endforeach
                 <button class="btn btn-outline-primary" type="submit">

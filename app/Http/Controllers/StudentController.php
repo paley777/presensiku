@@ -54,8 +54,8 @@ class StudentController extends Controller
         $validatedData = $request->validate([
             'fullname' => 'required',
             'id_kelas' => 'required',
-            'nisn' => 'required',
-            'foto' => 'image|file|max:10000',
+            'nisn' => 'required|unique:students',
+            'foto' => 'image|file|max:10000|mimes:jpeg,jpg,png,gif',
         ]);
         if ($request->file('foto')) {
             $validatedData['foto'] = $request->file('foto')->store('students_profile');
@@ -99,28 +99,53 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        $validatedData = $request->validate([
-            'id' => 'required',
-            'fullname' => 'required',
-            'id_kelas' => 'required',
-            'nisn' => 'required',
-            'foto' => 'image|file|max:10000',
-        ]);
+        if ($request->nisn == $student->nisn) {
+            $validatedData = $request->validate([
+                'id' => 'required',
+                'fullname' => 'required',
+                'id_kelas' => 'required',
+                'nisn' => 'required',
+                'foto' => 'image|file|max:10000|mimes:jpeg,jpg,png,gif',
+            ]);
 
-        if ($request->file('foto')) {
-            $validatedData['foto'] = $request->file('foto')->store('students_profile');
-        }
-
-        if ($request->file('foto')) {
-            if ($student->nama_gambar) {
-                Storage::delete($student['foto']);
+            if ($request->file('foto')) {
+                $validatedData['foto'] = $request->file('foto')->store('students_profile');
             }
-            $validatedData['foto'] = $request->file('foto')->store('students_profile');
+
+            if ($request->file('foto')) {
+                if ($student->nama_gambar) {
+                    Storage::delete($student['foto']);
+                }
+                $validatedData['foto'] = $request->file('foto')->store('students_profile');
+            }
+
+            Student::where('id', $validatedData['id'])->update($validatedData);
+
+            return redirect('/dashboard/students')->with('success', 'Siswa telah diubah!.');
+        } else {
+            $validatedData = $request->validate([
+                'id' => 'required',
+                'fullname' => 'required',
+                'id_kelas' => 'required',
+                'nisn' => 'required|unique:students',
+                'foto' => 'image|file|max:10000|mimes:jpeg,jpg,png,gif',
+            ]);
+
+            if ($request->file('foto')) {
+                $validatedData['foto'] = $request->file('foto')->store('students_profile');
+            }
+
+            if ($request->file('foto')) {
+                if ($student->nama_gambar) {
+                    Storage::delete($student['foto']);
+                }
+                $validatedData['foto'] = $request->file('foto')->store('students_profile');
+            }
+
+            Student::where('id', $validatedData['id'])->update($validatedData);
+
+            return redirect('/dashboard/students')->with('success', 'Siswa telah diubah!.');
         }
-
-        Student::where('id', $validatedData['id'])->update($validatedData);
-
-        return redirect('/dashboard/students')->with('success', 'Siswa telah diubah!.');
     }
 
     /**

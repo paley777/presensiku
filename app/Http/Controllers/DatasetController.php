@@ -66,9 +66,9 @@ class DatasetController extends Controller
         $validatedData = $request->validate([
             'id_student' => 'required',
             'fullname' => 'required',
-            'dataset1' => 'image|file|max:50000',
-            'dataset2' => 'image|file|max:50000',
-            'dataset3' => 'image|file|max:50000',
+            'dataset1' => 'image|file|max:50000|mimes:jpeg,jpg,png',
+            'dataset2' => 'image|file|max:50000|mimes:jpeg,jpg,png',
+            'dataset3' => 'image|file|max:50000|mimes:jpeg,jpg,png',
         ]);
         if ($request->file('dataset1')) {
             $validatedData['dataset1'] = $request->file('dataset1')->store($validatedData['id_student']);
@@ -118,9 +118,9 @@ class DatasetController extends Controller
             'id' => 'required',
             'id_student' => 'required',
             'fullname' => 'required',
-            'dataset1' => 'image|file|max:50000',
-            'dataset2' => 'image|file|max:50000',
-            'dataset3' => 'image|file|max:50000',
+            'dataset1' => 'image|file|max:50000|mimes:jpeg,jpg,png',
+            'dataset2' => 'image|file|max:50000|mimes:jpeg,jpg,png',
+            'dataset3' => 'image|file|max:50000|mimes:jpeg,jpg,png',
         ]);
         if ($request->file('dataset1')) {
             $validatedData['dataset1'] = $request->file('dataset1')->store($validatedData['id_student']);

@@ -44,7 +44,7 @@ class KelasController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_kelas' => 'required',
+            'nama_kelas' => 'required|unique:kelas',
             'jumlah' => 'required',
         ]);
         Kelas::create($validatedData);
@@ -86,15 +86,27 @@ class KelasController extends Controller
      */
     public function update(Request $request, Kelas $kela)
     {
-        $rules = [
-            'id' => 'required',
-            'nama_kelas' => 'required',
-            'jumlah' => 'required',
-        ];
-        $validatedData = $request->validate($rules);
-        Kelas::where('id', $validatedData['id'])->update($validatedData);
+        if ($request->nama_kelas == $kela->nama_kelas) {
+            $rules = [
+                'id' => 'required',
+                'nama_kelas' => 'required',
+                'jumlah' => 'required',
+            ];
+            $validatedData = $request->validate($rules);
+            Kelas::where('id', $validatedData['id'])->update($validatedData);
 
-        return redirect('/dashboard/kelas')->with('success', 'Kelas telah diubah!.');
+            return redirect('/dashboard/kelas')->with('success', 'Kelas telah diubah!.');
+        } else {
+            $rules = [
+                'id' => 'required',
+                'nama_kelas' => 'required|unique:kelas',
+                'jumlah' => 'required',
+            ];
+            $validatedData = $request->validate($rules);
+            Kelas::where('id', $validatedData['id'])->update($validatedData);
+
+            return redirect('/dashboard/kelas')->with('success', 'Kelas telah diubah!.');
+        }
     }
 
     /**

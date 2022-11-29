@@ -2,6 +2,15 @@
 
 @section('container')
     <div class="container" style="font-family: ABeeZee, sans-serif;">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="row mb-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
                 @if (session()->has('success'))
@@ -13,8 +22,8 @@
                 <h2>Tambah Siswa</h2>
                 <p class="w-lg-50">Isi formulir di bawah ini.</p>
             </div>
-            <form class="row g-2 needs-validation" method="post" action="/dashboard/students" enctype="multipart/form-data"
-                novalidate>
+            <form class="row g-2 needs-validation" method="post" action="/dashboard/students"
+                enctype="multipart/form-data">
                 @csrf
                 <div class="row py-5">
                     <div class="col-md-3">
@@ -31,9 +40,6 @@
                                 class="text-danger">*</span></label>
                         <input type="text" id="validationCustom01" class="form-control" name="fullname"
                             placeholder="Isi Nama Siswa" required>
-                        <div class="invalid-tooltip">
-                            Isi Nama Siswa.
-                        </div>
                         <br>
                         <label for="validationCustom01" class="form-label">Kelas<span class="text-danger">*</span></label>
                         <select class="form-select" name="id_kelas" required>
@@ -43,19 +49,14 @@
                         </select>
                         <br>
                         <label for="validationCustom01" class="form-label">NISN<span class="text-danger">*</span></label>
-                        <input type="text" id="validationCustom01" class="form-control" name="nisn"
-                            placeholder="Isi NISN Siswa" required>
-                        <div class="invalid-tooltip">
-                            Isi NISN Siswa.
-                        </div>
+                        <input type="text" id="validationCustom01"
+                            onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                            class="form-control" name="nisn" placeholder="Isi NISN Siswa" required>
                         <br>
                         <label for="validationCustom01" class="form-label">Foto Profil Siswa<span
                                 class="text-danger">*</span></label>
                         <input class="form-control" type="file" accept=".jpg,.gif,.png" id="image" name="foto"
                             onchange="previewImage()" required>
-                        <div class="invalid-tooltip">
-                            Isi Foto Profil Siswa.
-                        </div>
                     </div>
                     <p>
                         (Wajib terisi untuk kolom dengan tanda "<span class="text-danger">*</span>").
@@ -81,27 +82,6 @@
                 imgPreview.src = oFREvent.target.result;
             }
         }
-    </script>
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (() => {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
     </script>
     {{-- <script defer src="/js/face-api.min.js"></script>
     <script defer src="/js/script.js"></script> --}}

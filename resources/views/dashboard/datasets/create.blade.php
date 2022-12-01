@@ -104,7 +104,7 @@
                 "method": "POST",
                 "headers": {
                     "x-face-uid": fullname,
-                    "X-RapidAPI-Key": "8dabe2d056msh76be64041335aa8p11e3fajsn59c87fbbfa0c",
+                    "X-RapidAPI-Key": "d41b70e58emsh9adb5963ced0c63p176e87jsn3ff8ebcc0995",
                     "X-RapidAPI-Host": "face-recognition18.p.rapidapi.com"
                 },
                 "processData": false,

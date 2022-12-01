@@ -123,16 +123,48 @@ class UserController extends Controller
                     User::where('id', $validatedData['id'])->update($validatedData);
 
                     return redirect('/dashboard/users')->with('success', 'Akun telah diubah!.');
-                }
-            } else {
-                if ($request->no_hp == $user->no_hp) {
+                } else {
                     $rules = [
                         'id' => 'required',
                         'fullname' => 'required',
                         'nip' => 'required',
                         'role' => 'required',
                         'email' => 'required',
+                        'no_hp' => 'required|unique:users',
+                        'password' => 'required',
+                    ];
+                    $validatedData = $request->validate($rules);
+
+                    $validatedData['password'] = Hash::make($validatedData['password']);
+                    User::where('id', $validatedData['id'])->update($validatedData);
+
+                    return redirect('/dashboard/users')->with('success', 'Akun telah diubah!.');
+                }
+            } else {
+                if ($request->no_hp == $user->no_hp) {
+                    $rules = [
+                        'id' => 'required',
+                        'fullname' => 'required',
+                        'nip' => 'required|unique:users',
+                        'role' => 'required',
+                        'email' => 'required',
                         'no_hp' => 'required',
+                        'password' => 'required',
+                    ];
+                    $validatedData = $request->validate($rules);
+
+                    $validatedData['password'] = Hash::make($validatedData['password']);
+                    User::where('id', $validatedData['id'])->update($validatedData);
+
+                    return redirect('/dashboard/users')->with('success', 'Akun telah diubah!.');
+                } else {
+                    $rules = [
+                        'id' => 'required',
+                        'fullname' => 'required',
+                        'nip' => 'required|unique:users',
+                        'role' => 'required',
+                        'email' => 'required',
+                        'no_hp' => 'required|unique:users',
                         'password' => 'required',
                     ];
                     $validatedData = $request->validate($rules);
@@ -151,7 +183,7 @@ class UserController extends Controller
                         'fullname' => 'required',
                         'nip' => 'required',
                         'role' => 'required',
-                        'email' => 'required',
+                        'email' => 'required|unique:users',
                         'no_hp' => 'required',
                         'password' => 'required',
                     ];
@@ -167,10 +199,25 @@ class UserController extends Controller
                     $rules = [
                         'id' => 'required',
                         'fullname' => 'required',
-                        'nip' => 'required',
+                        'nip' => 'required|unique:users',
                         'role' => 'required',
-                        'email' => 'required',
+                        'email' => 'required|unique:users',
                         'no_hp' => 'required',
+                        'password' => 'required',
+                    ];
+                    $validatedData = $request->validate($rules);
+                    $validatedData['password'] = Hash::make($validatedData['password']);
+                    User::where('id', $validatedData['id'])->update($validatedData);
+
+                    return redirect('/dashboard/users')->with('success', 'Akun telah diubah!.');
+                } else {
+                    $rules = [
+                        'id' => 'required',
+                        'fullname' => 'required',
+                        'nip' => 'required|unique:users',
+                        'role' => 'required',
+                        'email' => 'required|unique:users',
+                        'no_hp' => 'required|unique:users',
                         'password' => 'required',
                     ];
                     $validatedData = $request->validate($rules);

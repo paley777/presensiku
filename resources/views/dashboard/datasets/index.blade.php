@@ -37,7 +37,11 @@
                     <tr>
                         @foreach ($datasets as $dataset)
                             <td>{{ $dataset->id_student }}</td>
-                            <td>{{ $dataset->fullname }}</td>
+                            <td>{{ $dataset->fullname }}
+                                <input type="hidden" class="form-control" id="fullname" placeholder="Isi Nama Siswa"
+                                    value="{{ $dataset->id_student }} {{ $dataset->id_student }} {{ $dataset->id_student }}"
+                                    required readonly>
+                            </td>
                             <td>
                                 <img class="" width="100px" height="100px" style="object-fit: cover;"
                                     src="{{ asset('storage/' . $dataset->dataset1) }}">
@@ -52,7 +56,7 @@
                                 <form action="/dashboard/datasets/{{ $dataset->id }}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf
-                                    <button class="badge bg-danger border-0"
+                                    <button onclick="myFunction()" class="badge bg-danger border-0"
                                         onclick="return confirm('Anda Yakin?')">Hapus</button>
                                 </form>
                             </td>
@@ -69,4 +73,26 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+    <script>
+        function myFunction() {
+            var fullname = document.getElementById('fullname').value;
+            const settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://face-recognition18.p.rapidapi.com/delete_face",
+                "method": "DELETE",
+                "headers": {
+                    "x-face-uid": fullname,
+                    "X-RapidAPI-Key": "d41b70e58emsh9adb5963ced0c63p176e87jsn3ff8ebcc0995",
+                    "X-RapidAPI-Host": "face-recognition18.p.rapidapi.com"
+                }
+            };
+
+            $.ajax(settings).done(function(response) {
+                console.log(response);
+            });
+        }
+    </script>
 @endsection
